@@ -1,5 +1,6 @@
 ﻿// See using System;
 
+using System.Globalization;
 using System.Reflection.PortableExecutable;
 
 namespace YourNamespace
@@ -17,18 +18,13 @@ namespace YourNamespace
             GymEquipments.Add("Leg Press");
             GymEquipments.Add("Arm Press");
             GymEquipments.Add("Neck Press");
-            GymEquipments.Add("Feet Press");
-
-            Console.WriteLine(GymEquipments.Count());
-
-       
+            GymEquipments.Add("Feet Press");       
 
             List<WorkoutCombination> PeopleWorkoutOrder = new List<WorkoutCombination>();
             List<string> Names = new List<string> {
                 "Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Hannah", "Isaac", "Jack"
             };
-
-           
+                    
         
             int max = 100;
 
@@ -61,9 +57,20 @@ namespace YourNamespace
                 
             }
 
-            Console.WriteLine(gymReservations.Count);
+            foreach(string machine in gymReservations.Keys)
+            {
+                Console.WriteLine(machine);
 
-
+                // Check if there's anyone in the queue
+                if (gymReservations[machine].Count > 0)
+                {
+                    // Print each person in the queue
+                    foreach (string name in gymReservations[machine])
+                    {
+                        Console.WriteLine($"\t- {name}");
+                    }
+                }
+            }
         }
 
         class WorkoutCombination
