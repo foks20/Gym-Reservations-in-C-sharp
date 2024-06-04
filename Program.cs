@@ -21,12 +21,11 @@ namespace YourNamespace
             GymEquipments.Add("Feet Press");       
 
             List<WorkoutCombination> PeopleWorkoutOrder = new List<WorkoutCombination>();
+
             List<string> Names = new List<string> {
                 "Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Hannah", "Isaac", "Jack"
             };
                     
-        
-            int max = 100;
 
             for(int i = 100; i >=0; i--)
             {
