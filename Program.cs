@@ -2,6 +2,7 @@
 
 using System.Globalization;
 using System.Reflection.PortableExecutable;
+using System.Xml.Linq;
 
 namespace YourNamespace
 {
@@ -52,6 +53,7 @@ namespace YourNamespace
                 else
                 {
                     gymReservations[PeopleWorkoutOrder[i].Machine].Enqueue(PeopleWorkoutOrder[i].Name);
+                    Console.WriteLine($"{PeopleWorkoutOrder[i].Name} just joined the waiting list and wants to use the {PeopleWorkoutOrder[i].Machine} machine");
                     time -= 25;
                 }
 
@@ -64,6 +66,11 @@ namespace YourNamespace
                         {
                             string name = gymReservations[machine].Dequeue();
                             Console.WriteLine($"{name} finished using {machine}");
+                            if (gymReservations[machine].Count > 0)
+                            {
+                                string nextInLine = gymReservations[machine].Peek();
+                                Console.WriteLine($"\tNext in line for {machine}: {nextInLine}");
+                            }
                         }
                     }
                 }
