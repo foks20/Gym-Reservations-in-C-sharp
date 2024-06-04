@@ -42,6 +42,7 @@ namespace YourNamespace
                 PeopleWorkoutOrder.Add(combination);
             }
 
+            int time = 100;
 
             for (int i = 0; i < PeopleWorkoutOrder.Count; i++)
             {
@@ -52,9 +53,21 @@ namespace YourNamespace
                 else
                 {
                     gymReservations[PeopleWorkoutOrder[i].Machine].Enqueue(PeopleWorkoutOrder[i].Name);
+                    time -= 25;
                 }
 
-                
+                if (time == 0)
+                {
+                    time = 100;
+                    foreach (string machine in gymReservations.Keys)
+                    {
+                        if (gymReservations[machine].Count > 0)
+                        {
+                            string name = gymReservations[machine].Dequeue();
+                            Console.WriteLine($"{name} finished using {machine}");
+                        }
+                    }
+                }
             }
 
             foreach(string machine in gymReservations.Keys)
